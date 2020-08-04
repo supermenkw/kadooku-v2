@@ -33,6 +33,11 @@ Route::get('/dashboard/transaction/detail', 'DashboardTransactionController@deta
 Route::get('/dashboard/settings', 'DashboardSettingController@store')->name('dashboard-setting-store');
 Route::get('/dashboard/account', 'DashboardSettingController@account')->name('dashboard-setting-account');
 
+Route::prefix('admin')->namespace('Admin')->group(function() {
+    Route::get('/', 'DashboardController@index')->name('admin-dashboard');
+    Route::resource('category', 'CategoryController');
+});
+
 Auth::routes();
 
 
