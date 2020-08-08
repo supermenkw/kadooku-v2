@@ -3,8 +3,8 @@ class="navbar navbar-expand-lg navbar-light navbar-store fixed-top navbar-fixed-
 data-aos="fade-down"
 >
 <div class="container">
-    <a class="navbar-brand" href="{{ url('/') }}">
-    <img src="{{ URL('/images/logo4.svg') }}" alt="logo" />
+    <a class="navbar-brand" href="{{ route('home') }}">
+    <img src="{{ url('/images/logo4.svg') }}" alt="logo" />
     </a>
     <button
     class="navbar-toggler"
@@ -20,13 +20,13 @@ data-aos="fade-down"
     <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-        <a class="nav-link" href="{{url('/')}}">Home </a>
+        <a class="nav-link" href="{{route('home')}}">Home </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{url('categories')}}">Categories</a>
+            <a class="nav-link" href="{{route('categories')}}">Categories</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('/') }}">Sale</a>
+            <a class="nav-link" href="{{ route('home') }}">Sale</a>
         </li>
     </ul>
     </div>
