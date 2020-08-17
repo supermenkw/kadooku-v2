@@ -80,7 +80,7 @@
                             <div class="categories-image">
                                 <img
                                     src="{{ Storage::url($category->photo) }}"
-                                    alt="Wedding"
+                                    alt="{{ $category->name }}"
                                     class="w-100"
                                 />
                             </div>

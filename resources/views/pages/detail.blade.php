@@ -68,16 +68,28 @@
         <div class="container">
         <div class="row">
             <div class="col-lg-8">
-            <h1>Sofa Ternyaman</h1>
-            <div class="owner">By Angga Ginanjar</div>
-            <div class="price">$1,409</div>
+            <h1>{{ $product->name }}</h1>
+            <div class="owner">By {{ $product->user->store_name }}</div>
+            <div class="price">Rp.{{ number_format($product->price) }}</div>
             </div>
             <div class="col-lg-2" data-aos="zoom-in">
-            <a
-                class="btn btn-success nav-link px-4 text-white btn-block mb-3"
-                href="/cart.html"
-                >Add to Cart</a
-            >
+            @auth
+                <form action="{{ route('detail-add', $product->id) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <button
+                        type="submit"
+                        class="btn btn-success px-4 text-white btn-block mb-3"
+                    >
+                        Add to Cart
+                    </button>
+                </form>
+            @else
+                <a href="{{ route('login') }}"
+                    class="btn btn-success px-4 text-white btn-block mb-3"
+                    >
+                    Sign in to Add
+                </a>
+            @endauth
             </div>
         </div>
         </div>
@@ -87,18 +99,7 @@
         <div class="row">
             <div class="col-12 col-lg-8">
             <p>
-                The Nike Air Max 720 SE goes bigger than ever before with
-                Nike's tallest Air unit yet for unimaginable, all-day comfort.
-                There's super breathable fabrics on the upper, while colours
-                add a modern edge.
-            </p>
-            <p>
-                Bring the past into the future with the Nike Air Max 2090, a
-                bold look inspired by the DNA of the iconic Air Max 90.
-                Brand-new Nike Air cushioning underfoot adds unparalleled
-                comfort while transparent mesh and vibrantly coloured details
-                on the upper are blended with timeless OG features for an
-                edgy, modernised look.
+                {!! $product->description !!}
             </p>
             </div>
         </div>
@@ -116,7 +117,7 @@
             <ul class="list-unstyled">
                 <li class="media">
                 <img
-                    src="{{URL('/images/testi_1.png')}}"
+                    src="/images/testi_1.png"
                     class="mr-3 rounded-circle"
                     alt=""
                 />
@@ -129,7 +130,7 @@
                 </li>
                 <li class="media my-4">
                 <img
-                    src="{{URL('/images/testi_2.png')}}"
+                    src="/images/testi_2.png"
                     class="mr-3 rounded-circle"
                     alt=""
                 />
@@ -142,7 +143,7 @@
                 </li>
                 <li class="media">
                 <img
-                src="{{URL('/images/testi_3.png')}}"
+                src="/images/testi_3.png"
                     class="mr-3 rounded-circle"
                     alt=""
                 />
@@ -164,39 +165,29 @@
 @endsection
 
 @push('addon-script')
-<script src="vendor/vue/vue.js"></script>
+<script src="/vendor/vue/vue.js"></script>
 <script>
     var gallery = new Vue({
-    el: "#gallery",
-    mounted() {
+        el: "#gallery",
+        mounted() {
         AOS.init();
-    },
-    data: {
-        activePhoto: 3,
+        },
+        data: {
+        activePhoto: 0,
         photos: [
-        {
-            id: 1,
-            url: "images/detil_1.jpg",
-        },
-        {
-            id: 2,
-            url: "images/detil_2.jpg",
-        },
-        {
-            id: 3,
-            url: "images/detil_3.jpg",
-        },
-        {
-            id: 4,
-            url: "images/detil_4.jpg",
-        },
+            @foreach($product->galleries as $gallery)
+            {
+                id: {{$gallery->id}} ,
+                url: "{{ Storage::url($gallery->photo) }}",
+            },
+            @endforeach
         ],
-    },
-    methods: {
-        changeActive(id) {
-        this.activePhoto = id;
         },
-    },
+        methods: {
+        changeActive(id) {
+            this.activePhoto = id;
+        },
+        },
     });
 </script>
 @endpush

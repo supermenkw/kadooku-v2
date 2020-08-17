@@ -96,7 +96,7 @@
                     </div>
                 @endforelse
         </div>
-        <div class="row">
+        <div class="row justify-content-md-center">
             <div class="col-12 mt-4">
                 {{ $products->links() }}
             </div>
