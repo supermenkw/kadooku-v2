@@ -26,28 +26,28 @@
             </div>
             <div class="list-group list-group-flush">
                 <a
-                    href="{{ url('dashboard') }}"
-                    class="list-group-item list-group-item-action"
+                    href="{{ route('dashboard') }}"
+                    class="list-group-item list-group-item-action {{ (request()->is('dashboard')) ? 'active' : '' }}"
                     >Dashboard</a
                 >
                 <a
-                    href="{{ url('dashboard/products') }}"
-                    class="list-group-item list-group-item-action"
+                    href="{{ route('dashboard-product') }}"
+                    class="list-group-item list-group-item-action {{ (request()->is('dashboard/products*')) ? 'active' : '' }}"
                     >My Products</a
                 >
                 <a
-                    href="{{ url('dashboard/transaction') }}"
-                    class="list-group-item list-group-item-action"
+                    href="{{ route('dashboard-transaction') }}"
+                    class="list-group-item list-group-item-action {{ (request()->is('dashboard/transaction*')) ? 'active' : '' }}"
                     >Transactions</a
                 >
                 <a
-                    href="{{ url('dashboard/settings') }}"
-                    class="list-group-item list-group-item-action"
+                    href="{{ route('dashboard-setting-store') }}"
+                    class="list-group-item list-group-item-action {{ (request()->is('dashboard/settings*')) ? 'active' : '' }}"
                     >Store Settings</a
                 >
                 <a
-                    href="{{ url('dashboard/account') }}"
-                    class="list-group-item list-group-item-action"
+                    href="{{ route('dashboard-setting-account') }}"
+                    class="list-group-item list-group-item-action {{ (request()->is('dashboard/account*')) ? 'active' : '' }}"
                     >My Account</a
                 >
             </div>
