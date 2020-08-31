@@ -17,97 +17,35 @@ data-aos="fade-up"
         </p>
         </div>
         <div class="dashboard-content">
-        <div class="row">
-            <div class="col-12">
-            <a
-                href="/dashboard-products-create.html"
-                class="btn btn-success"
-                >Add New Product</a
-            >
-            </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <a
-                class="card card-dashboard-product d-block"
-                href="/dashboard-products-details.html"
-            >
-                <div class="card-body">
-                <img
-                    src="{{asset('images/detil_1.jpg')}}"
-                    alt=""
-                    class="w-100 mb-2"
-                />
-                <div class="product-title">Shirup Marzzan</div>
-                <div class="product-category">Foods</div>
+            <div class="row">
+                <div class="col-12">
+                <a
+                    href="/dashboard-products-create.html"
+                    class="btn btn-success"
+                    >Add New Product</a
+                >
                 </div>
-            </a>
             </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <a
-                class="card card-dashboard-product d-block"
-                href="/dashboard-products-details.html"
-            >
-                <div class="card-body">
-                <img
-                    src="{{asset('images/detil_1.jpg')}}"
-                    alt=""
-                    class="w-100 mb-2"
-                />
-                <div class="product-title">Shirup Marzzan</div>
-                <div class="product-category">Foods</div>
+            <div class="row mt-4">
+                @foreach ($products as $product)
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <a
+                        href=""
+                        class="card card-dashboard-product d-block"
+                    >
+                        <div class="card-body">
+                        <img
+                            src="{{ Storage::url($product->galleries->first()->photo ?? '') }}"
+                            alt=""
+                            class="w-100 mb-2"
+                        />
+                        <div class="product-title">{{ $product->name }}</div>
+                        <div class="product-category">{{ $product->category->name }}</div>
+                        </div>
+                    </a>
                 </div>
-            </a>
+                @endforeach
             </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <a
-                class="card card-dashboard-product d-block"
-                href="/dashboard-products-details.html"
-            >
-                <div class="card-body">
-                <img
-                    src="{{asset('images/detil_1.jpg')}}"
-                    alt=""
-                    class="w-100 mb-2"
-                />
-                <div class="product-title">Shirup Marzzan</div>
-                <div class="product-category">Foods</div>
-                </div>
-            </a>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <a
-                class="card card-dashboard-product d-block"
-                href="/dashboard-products-details.html"
-            >
-                <div class="card-body">
-                <img
-                    src="{{asset('images/detil_1.jpg')}}"
-                    alt=""
-                    class="w-100 mb-2"
-                />
-                <div class="product-title">Shirup Marzzan</div>
-                <div class="product-category">Foods</div>
-                </div>
-            </a>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <a
-                class="card card-dashboard-product d-block"
-                href="/dashboard-products-details.html"
-            >
-                <div class="card-body">
-                <img
-                    src="{{asset('images/detil_1.jpg')}}"
-                    alt=""
-                    class="w-100 mb-2"
-                />
-                <div class="product-title">Shirup Marzzan</div>
-                <div class="product-category">Foods</div>
-                </div>
-            </a>
-            </div>
-        </div>
         </div>
     </div>
 </div>
